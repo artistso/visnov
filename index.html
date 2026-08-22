@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>MELANCHOLY FALLS — A Very Serious Drama</title>
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div id="stagewrap">
+  <div id="stage">
+    <!-- background -->
+    <div id="bgwrap"><div id="bg"></div><div id="bg2"></div></div>
+    <div id="grain"></div>
+    <div id="vignette"></div>
+    <div id="rainlayer"><canvas id="raincv" width="1280" height="720"></canvas></div>
+
+    <!-- sprites -->
+    <div id="sprites"></div>
+
+    <!-- letterbox + cutaway frame -->
+    <div id="bar-top" class="bar"></div>
+    <div id="bar-bot" class="bar"></div>
+    <div id="cutframe"></div>
+    <div id="cutlabel"></div>
+
+    <!-- freeze-frame lower third -->
+    <div id="lowerthird"><div class="lt-name"></div><div class="lt-sub"></div></div>
+
+    <!-- flash -->
+    <div id="flash"></div>
+
+    <!-- top hud -->
+    <div id="hud">
+      <div id="meters">
+        <div class="meter" id="m-drama"><span class="m-name">DRAMA</span><span class="m-bar"><span class="m-fill"></span></span></div>
+        <div class="meter" id="m-susp"><span class="m-name">SUSPICION</span><span class="m-bar"><span class="m-fill"></span></span></div>
+        <div class="meter" id="m-bond"><span class="m-name">BOND</span><span class="m-bar"><span class="m-fill"></span></span></div>
+      </div>
+      <div id="hudbtns">
+        <button id="b-auto" title="Auto-advance">AUTO</button>
+        <button id="b-log" title="History">LOG</button>
+        <button id="b-save" title="Save / Load">MENU</button>
+      </div>
+    </div>
+
+    <!-- meter popup -->
+    <div id="meterpop"></div>
+
+    <!-- dialogue -->
+    <div id="dlg">
+      <div id="nameplate"></div>
+      <div id="text"></div>
+      <div id="adv">▾</div>
+    </div>
+
+    <!-- choices -->
+    <div id="choices"></div>
+
+    <!-- screens -->
+    <div id="title" class="screen">
+      <div class="t-inner">
+        <img id="logoimg" src="assets/img/logo.jpg" alt="MELANCHOLY FALLS">
+        <div class="t-sub">A&nbsp;VERY&nbsp;SERIOUS&nbsp;DRAMA</div>
+        <div class="t-ep">EPISODE 1 — “PILOT”</div>
+        <div class="t-menu">
+          <button id="t-new">NEW GAME</button>
+          <button id="t-cont" style="display:none">CONTINUE</button>
+          <button id="t-load">LOAD</button>
+          <button id="t-gallery">ENDINGS &amp; CUTAWAYS</button>
+          <button id="t-settings">SETTINGS</button>
+        </div>
+        <div class="t-foot">Filmed on location in a town that is legally not named. No geese were interviewed.</div>
+      </div>
+    </div>
+
+    <div id="settings" class="screen panel-screen">
+      <div class="panel">
+        <h2>SETTINGS</h2>
+        <label class="row">Text speed <input type="range" id="s-speed" min="1" max="10" value="6"><span id="s-speedval"></span></label>
+        <label class="row">Auto-advance delay <input type="range" id="s-auto" min="1" max="10" value="5"></label>
+        <label class="row">Music &amp; sound <button id="s-mute" class="toggle">ON</button></label>
+        <div class="hint">Everything you replace in <code>assets/img/</code> with the same filename appears in the game. That’s the whole pipeline.</div>
+        <button class="close">CLOSE</button>
+      </div>
+    </div>
+
+    <div id="history" class="screen panel-screen">
+      <div class="panel">
+        <h2>PREVIOUSLY, ON MELANCHOLY FALLS</h2>
+        <div id="histlist"></div>
+        <button class="close">CLOSE</button>
+      </div>
+    </div>
+
+    <div id="saveload" class="screen panel-screen">
+      <div class="panel">
+        <h2 id="sl-title">SAVE / LOAD</h2>
+        <div id="slots"></div>
+        <button class="close">CLOSE</button>
+      </div>
+    </div>
+
+    <div id="gallery" class="screen panel-screen">
+      <div class="panel wide">
+        <h2>ENDINGS &amp; CUTAWAY REEL</h2>
+        <div id="gal-endings"></div>
+        <div id="gal-cutaways"></div>
+        <button class="close">CLOSE</button>
+      </div>
+    </div>
+
+    <div id="cutplayer" class="screen">
+      <div id="cutstage"></div>
+      <button id="cutclose">CLOSE</button>
+    </div>
+
+    <div id="endscreen" class="screen">
+      <div class="e-inner">
+        <div class="e-tbc">TO BE CONTINUED</div>
+        <div class="e-name"></div>
+        <div class="e-body"></div>
+        <div class="e-unlock"></div>
+        <div class="e-btns">
+          <button id="e-title">TITLE</button>
+          <button id="e-gallery">ENDINGS &amp; CUTAWAYS</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="src/audio.js"></script>
+<script src="src/script.js"></script>
+<script src="src/engine.js"></script>
+</body>
+</html>
